@@ -42,4 +42,20 @@ class Board
     end
   end
 
+  def valid_move?(cell)
+    cell = cell.to_i - 1
+    if (0 <= cell) && (cell < 10) && (self.cells[cell] == " ")
+      true
+    else
+      false
+    end
+  end
+
+  def update(cell, player)
+    if valid_move?(cell)
+      self.cells[cell.to_i - 1].split.join << player.token
+      #binding.pry
+    end
+  end
+
 end
