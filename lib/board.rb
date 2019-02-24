@@ -53,8 +53,7 @@ class Board
 
   def update(cell, player)
     if valid_move?(cell)
-      self.cells[cell.to_i - 1].split.join << player.token
-      #binding.pry
+      self.cells[cell.to_i - 1] = player.token
     end
   end
 
