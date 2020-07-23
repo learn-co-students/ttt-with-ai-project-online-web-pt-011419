@@ -1,3 +1,38 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+puts "Welcome! Let's Play!"
+puts
+puts "Enter '0' for computer vs computer"
+puts "Enter '1' for a 1 player game"
+puts "Enter '2' for a 2 player game"
+puts "Enter 'wargames' for some serious A.I."
+
+input = gets.strip.downcase
+
+  if input == "0"
+    game = Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"))
+    game.play
+  elsif input == "1"
+    puts "Who goes first? Player 1 or 2?"
+    @player == gets.strip
+    if @player == "1"
+      game = Game.new(player_1 = Players::Human.new("X"), player_2 = Players::Computer.new("O"))
+      game.play
+    else @player == "2"
+      game = Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Human.new("O"))
+      game.play
+    end
+  elsif input == "2"
+    game = Game.new
+    game.play
+  elsif input == 'wargames'
+    game = Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"))
+    100.times do
+      game.play
+    end
+  else
+    puts "Wrong!"
+    exit
+  end
